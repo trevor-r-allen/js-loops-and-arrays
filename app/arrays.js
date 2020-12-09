@@ -19,8 +19,18 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
-    arr.sort();
+    arr.sort((a , b) => a - b);
+    let object = {};
+    console.log(arr)
+    let duplicates = arr.filter(i => i == arr[(arr.length - 1)])
+    console.log(duplicates)
+    if (duplicates.length > 1){
+        object[duplicates[0]] = duplicates.length
+        return object
+    }
+    else{
     return arr.pop()
+    }
 }
 
 
@@ -135,6 +145,6 @@ let theBand = {
 function bandMemberDetails(name) {
     let found = theBand.members.find(member => member.name === name);
     console.log(found);
-    let output = '${found.name} is in the band and plays the ${found.instrument}';
+    let output = `${found.name} is in the band and plays the ${found.instrument}`;
     return found.name + " is in the band and plays the " + found.instrument
 }
